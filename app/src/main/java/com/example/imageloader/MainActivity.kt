@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity(), CatalogFragment.OnCatalogItemSelected 
     }
 
     override fun onCatalogItemSelected(model: CatalogItemUI) {
-        val itemDetailsFragment = ItemDetailsFragment.newInstance(model.url, model.name)
+        val itemDetailsFragment = ItemDetailsFragment.newInstance(
+            model.url,
+            "${model.name}: ${model.salePrice.amount} ${model.salePrice.currency}"
+        )
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, itemDetailsFragment, "itemDetails")
             .addToBackStack(null).commit()

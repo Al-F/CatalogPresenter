@@ -4,6 +4,7 @@ import com.example.imageloader.data.model.CatalogResponse
 import com.example.imageloader.data.model.Product
 import com.example.imageloader.ui.model.CatalogItemUI
 import com.example.imageloader.ui.model.CategoryUI
+import com.example.imageloader.ui.model.SalePriceUI
 
 internal object CatalogItemMapper {
     fun mapToCategoriesUi(categories: List<CatalogResponse>?): List<CategoryUI> {
@@ -49,7 +50,11 @@ internal object CatalogItemMapper {
             categoryId = this.categoryId,
             name = this.name,
             description = this.description,
-            url = this.url
+            url = this.url,
+            salePrice = SalePriceUI(
+                this.salePrice.amount,
+                this.salePrice.currency
+            )
         )
     }
 }
