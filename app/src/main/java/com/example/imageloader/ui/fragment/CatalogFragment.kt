@@ -14,6 +14,7 @@ import com.example.imageloader.databinding.CatalogFragmentBinding
 import com.example.imageloader.ui.adapter.CatalogItemAdapter
 import com.example.imageloader.ui.model.CatalogItemUI
 import dagger.android.support.DaggerFragment
+import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class CatalogFragment : DaggerFragment() {
@@ -66,9 +67,19 @@ class CatalogFragment : DaggerFragment() {
                 adapter.renderables = it
             }
         })
-        viewModel.observeFailure().observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), "Error occurred, try again later", Toast.LENGTH_LONG)
-                .show()
+        viewModel.observeFailure().observe(viewLifecycleOwner, Observer { failure ->
+            when (failure.error) {
+                is SocketTimeoutException -> Toast.makeText(
+                    requireContext(),
+                    "Content is not available in your region",
+                    Toast.LENGTH_LONG
+                ).show()
+                else -> Toast.makeText(
+                    requireContext(),
+                    "Server error, try again later",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         })
         adapter.observeSelectedForExpantion().observe(viewLifecycleOwner, Observer {
             itemSelectedListener.onCatalogItemSelected(it)

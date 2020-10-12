@@ -10,27 +10,24 @@ import com.example.imageloader.ui.model.CatalogItemUI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 import javax.inject.Inject
+
 const val BASE_URL = "http://mobcategories.s3-website-eu-west-1.amazonaws.com"
-class CatalogViewModel @Inject constructor(
-    private val retrofit: Retrofit
-) : ViewModel() {
+class CatalogViewModel @Inject constructor() : ViewModel() {
 
     private val failure: MutableLiveData<Failure> = MutableLiveData()
 
     @Inject
     lateinit var listOfItems: Call<List<CatalogResponse>>
 
-    private val _items = MutableLiveData<List<CatalogItemUI>>()
-    val items: LiveData<List<CatalogItemUI>> = _items
+    private val catalogItems = MutableLiveData<List<CatalogItemUI>>()
 
     fun observeFailure(): LiveData<Failure> = failure
 
-    fun observeItems(): LiveData<List<CatalogItemUI>> = items
+    fun observeItems(): LiveData<List<CatalogItemUI>> = catalogItems
 
     fun loadCatalog() {
-        if (_items.value == null) {
+        if (catalogItems.value == null) {
             requestCatalogFromServer()
         }
     }
@@ -42,12 +39,12 @@ class CatalogViewModel @Inject constructor(
                 response: Response<List<CatalogResponse>>
             ) {
                 if (response.code() == 200) {
-                    _items.value = CatalogItemMapper.mapToCatalogItemsUi(response.body())
+                    catalogItems.value = CatalogItemMapper.mapToCatalogItemsUi(response.body())
                 }
             }
 
             override fun onFailure(call: Call<List<CatalogResponse>>, t: Throwable) {
-                handleFailure(Failure.ServerError)
+                handleFailure(Failure.ServerError(t))
             }
         })
     }
