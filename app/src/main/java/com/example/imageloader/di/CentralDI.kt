@@ -1,6 +1,5 @@
 package com.example.imageloader.di
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.imageloader.CatalogApplication
@@ -72,14 +71,4 @@ class NetworkModule {
     fun provideCatalogItemsList(retrofit: Retrofit): Call<List<CatalogResponse>> {
         return retrofit.create(CatalogAPI::class.java).getImages()
     }
-
-//    @Provides
-//    fun provideCatalogRepository(catalogAPI: CatalogAPI): CatalogRepository {
-//        return CatalogRepository(catalogAPI)
-//    }
-//
-//    @Provides
-//    fun provideCatalogInteractor(catalogRepository: CatalogRepository): CatalogService {
-//        return CatalogService(catalogRepository)
-//    }
 }
