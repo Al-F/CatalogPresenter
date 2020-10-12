@@ -12,7 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import javax.inject.Inject
-
+const val BASE_URL = "http://mobcategories.s3-website-eu-west-1.amazonaws.com"
 class CatalogViewModel @Inject constructor(
     private val retrofit: Retrofit
 ) : ViewModel() {
@@ -23,7 +23,7 @@ class CatalogViewModel @Inject constructor(
     lateinit var listOfItems: Call<List<CatalogResponse>>
 
     private val _items = MutableLiveData<List<CatalogItemUI>>()
-    private val items: LiveData<List<CatalogItemUI>> = _items
+    val items: LiveData<List<CatalogItemUI>> = _items
 
     fun observeFailure(): LiveData<Failure> = failure
 

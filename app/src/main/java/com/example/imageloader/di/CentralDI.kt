@@ -14,7 +14,6 @@ import dagger.android.ContributesAndroidInjector
 import dagger.internal.Beta
 import dagger.multibindings.IntoMap
 import io.reactivex.schedulers.Schedulers
-import okhttp3.MediaType
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -37,7 +36,6 @@ abstract class AndroidSupportInjectionModule private constructor()
 
 @Module
 abstract class CatalogModule {
-
     @ContributesAndroidInjector(
         modules = [
             ViewModelBuilder::class
@@ -55,7 +53,6 @@ abstract class CatalogModule {
 class NetworkModule {
     companion object {
         private const val BASE_URL = "http://mobcategories.s3-website-eu-west-1.amazonaws.com/"
-        private val MIME_APPLICATION_JSON = MediaType.get("application/json")
     }
 
     @Provides

@@ -3,6 +3,7 @@ package com.example.imageloader
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imageloader.ui.fragment.CatalogFragment
+import com.example.imageloader.ui.fragment.ItemDetailsFragment
 import com.example.imageloader.ui.model.CatalogItemUI
 
 class MainActivity : AppCompatActivity(), CatalogFragment.OnCatalogItemSelected {
@@ -18,7 +19,10 @@ class MainActivity : AppCompatActivity(), CatalogFragment.OnCatalogItemSelected 
     }
 
     override fun onCatalogItemSelected(model: CatalogItemUI) {
-        TODO("Not yet implemented")
+        val itemDetailsFragment = ItemDetailsFragment.newInstance(model.url, model.name)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, itemDetailsFragment, "itemDetails")
+            .addToBackStack(null).commit()
     }
 }
 
