@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view_preview"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/card_view_width"
     android:layout_height="@dimen/card_view_height"
     android:layout_margin="@dimen/margin_general">
@@ -26,7 +25,7 @@
 
         <TextView
             android:id="@+id/item_name_preview"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_general"
             android:layout_marginEnd="@dimen/margin_general"
@@ -36,8 +35,7 @@
             app:layout_constraintTop_toBottomOf="@+id/preview_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Tags of the picture that will be shown there and can contain multiple lines of tags" />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

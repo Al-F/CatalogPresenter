@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewmodel"
-            type="com.example.imageloader.ui.fragment.CatalogViewModel" />
+            type="com.example.imageloader.ui.viewmodels.CatalogViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
