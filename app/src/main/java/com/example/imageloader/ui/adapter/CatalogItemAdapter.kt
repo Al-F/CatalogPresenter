@@ -7,15 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageloader.R
-import com.example.imageloader.ui.model.CatalogItemUI
+import com.example.imageloader.ui.model.CatalogItemUi
 import kotlin.properties.Delegates
 
 class CatalogItemAdapter : RecyclerView.Adapter<CatalogItemViewHolder>() {
 
-    private var imageSelectedForExpantion = MutableLiveData<CatalogItemUI>()
-    fun observeSelectedForExpantion(): LiveData<CatalogItemUI> = imageSelectedForExpantion
+    private var imageSelectedForExpantion = MutableLiveData<CatalogItemUi>()
+    fun observeSelectedForExpantion(): LiveData<CatalogItemUi> = imageSelectedForExpantion
 
-    var renderables: List<CatalogItemUI> by Delegates.observable(emptyList()) { _, _, _ ->
+    var renderables: List<CatalogItemUi> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
 
@@ -33,7 +33,7 @@ class CatalogItemAdapter : RecyclerView.Adapter<CatalogItemViewHolder>() {
                 builder.setTitle("Open image")
                 builder.setMessage("Do you want to see more details?")
 
-                builder.setPositiveButton("Yes") { dialog, which ->
+                builder.setPositiveButton("Yes") { dialog, _ ->
                     this.imageSelectedForExpantion.value = renderables[position]
                     dialog.dismiss()
                 }

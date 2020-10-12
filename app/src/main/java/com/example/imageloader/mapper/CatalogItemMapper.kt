@@ -2,23 +2,23 @@ package com.example.imageloader.mapper
 
 import com.example.imageloader.data.model.CatalogResponse
 import com.example.imageloader.data.model.Product
-import com.example.imageloader.ui.model.CatalogItemUI
-import com.example.imageloader.ui.model.CategoryUI
-import com.example.imageloader.ui.model.SalePriceUI
+import com.example.imageloader.ui.model.CatalogItemUi
+import com.example.imageloader.ui.model.CategoryUi
+import com.example.imageloader.ui.model.SalePriceUi
 
 internal object CatalogItemMapper {
-    fun mapToCategoriesUi(categories: List<CatalogResponse>?): List<CategoryUI> {
+    fun mapToCategoriesUi(categories: List<CatalogResponse>?): List<CategoryUi> {
         if (categories.isNullOrEmpty()) {
             return emptyList()
         } else {
-            val list = mutableListOf<CategoryUI>()
+            val list = mutableListOf<CategoryUi>()
             categories.forEach { category ->
-                val listOfProducts = mutableListOf<CatalogItemUI>()
+                val listOfProducts = mutableListOf<CatalogItemUi>()
                 category.products.forEach { product ->
                     listOfProducts.add(product.mapToCatalogItemUi())
                 }
                 list.add(
-                    CategoryUI(
+                    CategoryUi(
                         id = category.id,
                         name = category.name,
                         description = category.description,
@@ -30,11 +30,11 @@ internal object CatalogItemMapper {
         }
     }
 
-    fun mapToCatalogItemsUi(categories: List<CatalogResponse>?): List<CatalogItemUI> {
+    fun mapToCatalogItemsUi(categories: List<CatalogResponse>?): List<CatalogItemUi> {
         return if (categories.isNullOrEmpty()) {
             emptyList()
         } else {
-            val list = mutableListOf<CatalogItemUI>()
+            val list = mutableListOf<CatalogItemUi>()
             categories.forEach { category ->
                 category.products.forEach { product ->
                     list.add(product.mapToCatalogItemUi())
@@ -44,14 +44,14 @@ internal object CatalogItemMapper {
         }
     }
 
-    private fun Product.mapToCatalogItemUi(): CatalogItemUI {
-        return CatalogItemUI(
+    private fun Product.mapToCatalogItemUi(): CatalogItemUi {
+        return CatalogItemUi(
             id = this.id,
             categoryId = this.categoryId,
             name = this.name,
             description = this.description,
             url = this.url,
-            salePrice = SalePriceUI(
+            salePrice = SalePriceUi(
                 this.salePrice.amount,
                 this.salePrice.currency
             )

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.imageloader.databinding.CatalogFragmentBinding
 import com.example.imageloader.ui.adapter.CatalogItemAdapter
-import com.example.imageloader.ui.model.CatalogItemUI
+import com.example.imageloader.ui.model.CatalogItemUi
 import dagger.android.support.DaggerFragment
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -87,6 +87,6 @@ class CatalogFragment : DaggerFragment() {
     }
 
     interface OnCatalogItemSelected {
-        fun onCatalogItemSelected(model: CatalogItemUI)
+        fun onCatalogItemSelected(model: CatalogItemUi)
     }
 }

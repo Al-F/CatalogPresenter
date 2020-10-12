@@ -3,7 +3,7 @@ package com.example.imageloader.di
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.imageloader.CatalogApplication
-import com.example.imageloader.api.CatalogAPI
+import com.example.imageloader.api.CatalogApi
 import com.example.imageloader.data.model.CatalogResponse
 import com.example.imageloader.ui.fragment.CatalogFragment
 import com.example.imageloader.ui.fragment.CatalogViewModel
@@ -66,6 +66,6 @@ class NetworkModule {
 
     @Provides
     fun provideCatalogItemsList(retrofit: Retrofit): Call<List<CatalogResponse>> {
-        return retrofit.create(CatalogAPI::class.java).getImages()
+        return retrofit.create(CatalogApi::class.java).getImages()
     }
 }

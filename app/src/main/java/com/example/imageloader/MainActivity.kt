@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imageloader.ui.fragment.CatalogFragment
 import com.example.imageloader.ui.fragment.ItemDetailsFragment
-import com.example.imageloader.ui.model.CatalogItemUI
+import com.example.imageloader.ui.model.CatalogItemUi
 
 class MainActivity : AppCompatActivity(), CatalogFragment.OnCatalogItemSelected {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), CatalogFragment.OnCatalogItemSelected 
         }
     }
 
-    override fun onCatalogItemSelected(model: CatalogItemUI) {
+    override fun onCatalogItemSelected(model: CatalogItemUi) {
         val itemDetailsFragment = ItemDetailsFragment.newInstance(
             model.url,
             "${model.name}: ${model.salePrice.amount} ${model.salePrice.currency}"
