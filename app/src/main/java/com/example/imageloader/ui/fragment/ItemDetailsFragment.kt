@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.imageloader.R
 import com.example.imageloader.ui.utils.loadImage
+import com.example.imageloader.ui.viewmodels.BASE_URL
 import kotlinx.android.synthetic.main.fragment_item_details.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

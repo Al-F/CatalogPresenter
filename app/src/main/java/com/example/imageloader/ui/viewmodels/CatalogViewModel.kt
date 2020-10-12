@@ -1,4 +1,4 @@
-package com.example.imageloader.ui.fragment
+package com.example.imageloader.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,12 +13,12 @@ import retrofit2.Response
 import javax.inject.Inject
 
 const val BASE_URL = "http://mobcategories.s3-website-eu-west-1.amazonaws.com"
-class CatalogViewModel @Inject constructor() : ViewModel() {
+
+class CatalogViewModel @Inject constructor(
+    private var listOfItems: Call<List<CatalogResponse>>
+) : ViewModel() {
 
     private val failure: MutableLiveData<Failure> = MutableLiveData()
-
-    @Inject
-    lateinit var listOfItems: Call<List<CatalogResponse>>
 
     private val catalogItems = MutableLiveData<List<CatalogItemUi>>()
 

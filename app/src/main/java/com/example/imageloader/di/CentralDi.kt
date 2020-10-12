@@ -6,7 +6,7 @@ import com.example.imageloader.CatalogApplication
 import com.example.imageloader.api.CatalogApi
 import com.example.imageloader.data.model.CatalogResponse
 import com.example.imageloader.ui.fragment.CatalogFragment
-import com.example.imageloader.ui.fragment.CatalogViewModel
+import com.example.imageloader.ui.viewmodels.CatalogViewModel
 import dagger.*
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.imageloader.databinding.CatalogFragmentBinding
 import com.example.imageloader.ui.adapter.CatalogItemAdapter
 import com.example.imageloader.ui.model.CatalogItemUi
+import com.example.imageloader.ui.viewmodels.CatalogViewModel
 import dagger.android.support.DaggerFragment
 import java.net.SocketTimeoutException
 import javax.inject.Inject
