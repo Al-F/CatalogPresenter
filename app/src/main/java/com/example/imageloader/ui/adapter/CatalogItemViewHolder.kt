@@ -2,9 +2,9 @@ package com.example.imageloader.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.imageloader.CatalogApplication.Companion.BASE_URL
 import com.example.imageloader.ui.model.CatalogItemUi
 import com.example.imageloader.ui.utils.loadImage
-import com.example.imageloader.ui.viewmodels.BASE_URL
 import kotlinx.android.synthetic.main.catalog_item.view.*
 
 class CatalogItemViewHolder(var item: View) : RecyclerView.ViewHolder(item) {

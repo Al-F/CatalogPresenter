@@ -12,7 +12,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-const val BASE_URL = "http://mobcategories.s3-website-eu-west-1.amazonaws.com"
 
 class CatalogViewModel @Inject constructor(
     private var listOfItems: Call<List<CatalogResponse>>

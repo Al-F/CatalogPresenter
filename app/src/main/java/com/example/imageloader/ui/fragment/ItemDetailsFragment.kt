@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.imageloader.CatalogApplication.Companion.BASE_URL
 import com.example.imageloader.R
 import com.example.imageloader.ui.utils.loadImage
-import com.example.imageloader.ui.viewmodels.BASE_URL
 import kotlinx.android.synthetic.main.fragment_item_details.*
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_IMAGE_URL = "imageUrl"
 private const val ARG_ITEM_NAME = "itemName"
 
@@ -35,7 +34,6 @@ class ItemDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_item_details, container, false)
     }
 
