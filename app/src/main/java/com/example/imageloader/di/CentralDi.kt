@@ -6,6 +6,7 @@ import com.example.imageloader.CatalogApplication
 import com.example.imageloader.api.CatalogApi
 import com.example.imageloader.data.model.CatalogResponse
 import com.example.imageloader.ui.fragment.CatalogFragment
+import com.example.imageloader.ui.fragment.ItemDetailsFragment
 import com.example.imageloader.ui.viewmodels.CatalogViewModel
 import dagger.*
 import dagger.android.AndroidInjectionModule
@@ -42,6 +43,13 @@ abstract class CatalogModule {
         ]
     )
     internal abstract fun catalogFragment(): CatalogFragment
+
+    @ContributesAndroidInjector(
+        modules = [
+            ViewModelBuilder::class
+        ]
+    )
+    internal abstract fun itemDetailsFragment(): ItemDetailsFragment
 
     @Binds
     @IntoMap

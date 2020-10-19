@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.imageloader.CatalogApplication.Companion.BASE_URL
-import com.example.imageloader.R
+import com.example.imageloader.databinding.ItemDetailsFragmentBinding
 import com.example.imageloader.ui.utils.loadImage
-import kotlinx.android.synthetic.main.fragment_item_details.*
+import com.example.imageloader.ui.viewmodels.CatalogViewModel
+import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.item_details_fragment.*
+import javax.inject.Inject
 
 private const val ARG_IMAGE_URL = "imageUrl"
 private const val ARG_ITEM_NAME = "itemName"
@@ -18,9 +23,15 @@ private const val ARG_ITEM_NAME = "itemName"
  * Use the [ItemDetailsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ItemDetailsFragment : Fragment() {
+class ItemDetailsFragment : DaggerFragment() {
     private var imageURL: String? = null
     private var itemName: String? = null
+
+    private lateinit var viewDataBinding: ItemDetailsFragmentBinding
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel by viewModels<CatalogViewModel> { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +45,15 @@ class ItemDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_item_details, container, false)
+        viewDataBinding = ItemDetailsFragmentBinding.inflate(inflater, container, false).apply {
+            viewmodeldetails = viewModel
+        }
+        return viewDataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.observeItems().value
         item_details_image.loadImage(BASE_URL + imageURL)
         item_details_name.text = itemName
     }

@@ -25,6 +25,7 @@ class CatalogViewModel @Inject constructor(
 
     fun observeItems(): LiveData<List<CatalogItemUi>> = catalogItems
 
+    //TODO: move to init view model
     fun loadCatalog() {
         if (catalogItems.value == null) {
             requestCatalogFromServer()
