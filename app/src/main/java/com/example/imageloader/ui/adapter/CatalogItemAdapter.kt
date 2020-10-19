@@ -2,7 +2,6 @@ package com.example.imageloader.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -29,17 +28,7 @@ class CatalogItemAdapter : RecyclerView.Adapter<CatalogItemViewHolder>() {
     override fun onBindViewHolder(holder: CatalogItemViewHolder, position: Int) {
         holder.bind(renderables[position])
         holder.item.setOnClickListener {
-            val alertDialog = AlertDialog.Builder(it.context).also { builder ->
-                builder.setTitle("Open image")
-                builder.setMessage("Do you want to see more details?")
-
-                builder.setPositiveButton("Yes") { dialog, _ ->
-                    this.imageSelectedForExpantion.value = renderables[position]
-                    dialog.dismiss()
-                }
-                builder.setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-            }.create()
-            alertDialog.show()
+            this.imageSelectedForExpantion.value = renderables[position]
         }
     }
 
