@@ -12,7 +12,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-
 class CatalogViewModel @Inject constructor(
     private var listOfItems: Call<List<CatalogResponse>>
 ) : ViewModel() {

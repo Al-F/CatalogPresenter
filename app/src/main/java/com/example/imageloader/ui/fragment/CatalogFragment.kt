@@ -23,7 +23,8 @@ class CatalogFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<CatalogViewModel> { viewModelFactory }
+    private val viewModel by viewModels<CatalogViewModel> //({requireActivity()})
+    { viewModelFactory }
 
     private lateinit var adapter: CatalogItemAdapter
     private lateinit var itemSelectedListener: OnCatalogItemSelected

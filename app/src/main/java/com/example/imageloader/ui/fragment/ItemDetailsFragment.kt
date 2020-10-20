@@ -31,7 +31,7 @@ class ItemDetailsFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<CatalogViewModel> { viewModelFactory }
+    private val viewModel by viewModels<CatalogViewModel>({ requireActivity() }) { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class ItemDetailsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.observeItems().value
+        viewModel.loadCatalog()
         item_details_image.loadImage(BASE_URL + imageURL)
         item_details_name.text = itemName
     }

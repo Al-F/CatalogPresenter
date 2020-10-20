@@ -51,6 +51,7 @@ abstract class CatalogModule {
     )
     internal abstract fun itemDetailsFragment(): ItemDetailsFragment
 
+    @Singleton
     @Binds
     @IntoMap
     @ViewModelKey(CatalogViewModel::class)

@@ -28,9 +28,10 @@ import kotlin.reflect.KClass
 /**
  * ViewModelFactory which uses Dagger to create the instances.
  */
-class TodoViewModelFactory @Inject constructor(
+class CatalogViewModelFactory @Inject constructor(
     private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         var creator: Provider<out ViewModel>? = creators[modelClass]
         if (creator == null) {
@@ -51,13 +52,14 @@ class TodoViewModelFactory @Inject constructor(
             throw RuntimeException(e)
         }
     }
+
 }
 
 @Module
 internal abstract class ViewModelBuilder {
     @Binds
     internal abstract fun bindViewModelFactory(
-        factory: TodoViewModelFactory
+        factory: CatalogViewModelFactory
     ): ViewModelProvider.Factory
 }
 
