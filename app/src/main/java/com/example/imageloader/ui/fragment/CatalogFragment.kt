@@ -63,7 +63,6 @@ class CatalogFragment : DaggerFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
-        viewModel.loadCatalog()
 
         viewModel.observeItems().observe(viewLifecycleOwner, {
             it?.let {

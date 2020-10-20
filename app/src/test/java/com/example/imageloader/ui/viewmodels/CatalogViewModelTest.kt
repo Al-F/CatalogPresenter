@@ -33,13 +33,8 @@ class CatalogViewModelTest {
 
     @Test
     fun shouldLoadValues() {
-        catalogViewModel.loadCatalog()
+        catalogViewModel.reloadCatalog()
         Mockito.verify(listOfItems).enqueue(Mockito.any())
-    }
-
-    @Test
-    fun shouldNotLoadValuesIfPreviouslyLoaded() {
-        //listOfItems Enqueue Should Return values then second call for load will not be executed
     }
 
     @Test

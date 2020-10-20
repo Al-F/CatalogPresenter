@@ -47,7 +47,6 @@ class ItemDetailsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.loadCatalog()
         item_details_image.loadImage(BASE_URL + viewModel.selectedItem.url)
         item_details_name.text = viewModel.selectedItem.name
     }

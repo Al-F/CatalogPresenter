@@ -15,9 +15,7 @@ import javax.inject.Inject
 class CatalogViewModel @Inject constructor(
     private var listOfItems: Call<List<CatalogResponse>>
 ) : ViewModel() {
-
     private val failure: MutableLiveData<Failure> = MutableLiveData()
-
     private val catalogItems = MutableLiveData<List<CatalogItemUi>>()
 
     private lateinit var _selectedItem: CatalogItemUi
@@ -25,14 +23,17 @@ class CatalogViewModel @Inject constructor(
         get() = _selectedItem
 
     fun observeFailure(): LiveData<Failure> = failure
-
     fun observeItems(): LiveData<List<CatalogItemUi>> = catalogItems
 
-    //TODO: move to init view model
-    fun loadCatalog() {
+    init {
         if (catalogItems.value == null) {
             requestCatalogFromServer()
         }
+    }
+
+
+    fun reloadCatalog() {
+        requestCatalogFromServer()
     }
 
     private fun requestCatalogFromServer() {
