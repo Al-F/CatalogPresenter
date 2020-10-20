@@ -42,6 +42,8 @@ dependencies {
     testImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     testImplementation 'org.mockito:mockito-core:2.24.0'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.amshove.kluent:kluent-android:1.63'
+    testImplementation "io.mockk:mockk:1.9.3"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.6.4"
