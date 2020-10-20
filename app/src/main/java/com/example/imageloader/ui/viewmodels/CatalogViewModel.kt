@@ -20,6 +20,10 @@ class CatalogViewModel @Inject constructor(
 
     private val catalogItems = MutableLiveData<List<CatalogItemUi>>()
 
+    private lateinit var _selectedItem: CatalogItemUi
+    val selectedItem: CatalogItemUi
+        get() = _selectedItem
+
     fun observeFailure(): LiveData<Failure> = failure
 
     fun observeItems(): LiveData<List<CatalogItemUi>> = catalogItems
@@ -51,5 +55,9 @@ class CatalogViewModel @Inject constructor(
 
     private fun handleFailure(failure: Failure) {
         this.failure.value = failure
+    }
+
+    fun onItemSelected(catalogItemUi: CatalogItemUi) {
+        _selectedItem = catalogItemUi
     }
 }
